@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import MovieCard from "./components/MovieCard"
+import Favorites from './pages/Favorites.jsx'
+import Home from "./pages/Home.jsx"
+import { Route, Routes } from "react-router-dom"
+
+// function App() {  // This is a component: A component is basically a function that returns a jsx or say react code!
+
+//   return (         // Return should only have one parent element so two divs won't be returned
+//     // But we can return it using a fragment "<> </>" i.e., empty html tag
+//     <>
+//       <Text name = "Ujjwal"/>
+//     </>
+//   )
+// }
+
+// function Text({name})  // {name} is called prop i.e., property like basically saying arguments of a function (which is what it is XD)
+// {
+//   return(
+//     <div>
+//       <p>Hello {name} from Text!</p>
+//     </div>
+//   )
+// }
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main className='main'>
+      {/* This is called conditional rendering */}
+      {/* {movieNumber === 1 ? <MovieCard movie={{ title: "Ujjwal Karki Don", release_date: "2025" }} /> :  
+        <MovieCard movie={{ title: "Don ho Ujjwal Karki", release_date: "2020" }} />} */}
+
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/favorites' element={<Favorites/>}/>
+      </Routes>
+    </main>
+
   )
 }
 
