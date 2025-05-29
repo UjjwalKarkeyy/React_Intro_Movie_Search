@@ -128,10 +128,10 @@ This project helped build a foundational understanding of:
 - Built by [@UjjwalKarkeyy](https://github.com/UjjwalKarkeyy)
 ---
 
-## Picture 1:
+## Home Page View:
 ![Screenshot 2025-05-29 190637](https://github.com/user-attachments/assets/1738b573-0935-40c3-9849-a5d51b52bdf5)
 
-## Picture 2:
+## Pavorites Page View:
 ![Screenshot 2025-05-29 190705](https://github.com/user-attachments/assets/ee7505f6-dc31-4b74-a387-7010695d52b7)
 
   
