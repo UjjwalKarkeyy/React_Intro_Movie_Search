@@ -13,7 +13,6 @@ function MovieCard({ movie })  // Supposing in the beginning that we get an obje
         else addToFavorites(movie)
     }
 
-
     return ( // The class inside div is called className as class is a reserved keyword for JS
         <div className="movie-card">
             <div className="movie-poster">
