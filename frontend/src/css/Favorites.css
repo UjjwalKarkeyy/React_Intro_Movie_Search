@@ -49,3 +49,7 @@
 .movies-grid > * {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+h1{
+  text-align: center;
+}

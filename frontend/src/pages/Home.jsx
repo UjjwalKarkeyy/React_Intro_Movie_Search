@@ -1,6 +1,9 @@
 import MovieCard from "../components/MovieCard.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import '../css/Home.css'
+import { searchMovies, getPopularMovies } from "../services/api.js";
+
+// useEffect: This allows you to add side effects to your functions/components and define when they should run
 
 // Now, components make up parts of the UI right and yes you can make them whole pages, but we don't want that. That's not why we use components.
 // So, we create pages folder to store all the pages that we are going to show and we'll later use page router to jump or say redirect between pages.
@@ -11,19 +14,53 @@ We mainly use state here for search bar so when the user types something like sa
 Insidious, etc.
 */
 
-
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
-    const movies = [
-        { id: 1, title: "Intersteller", release_date: 2023 },
-        { id: 2, title: "Once Upon a Time in London", release_date: 2015 },
-        { id: 3, title: "Insidious", release_date: 2003 },
-        { id: 4, title: "Shawshank Redemption", release_date: 2001 },
-    ]
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [err, setErr] = useState(null);
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        alert(searchQuery);
+    // This is basically saying, useEffect(() =>, []), if we have no change i.e., [], then execute left side
+    useEffect(() => {
+        const loadPopularMovies = async () => {
+            try {
+                const popularMovies = await getPopularMovies()
+                setMovies(popularMovies)
+            }
+            catch (err) {
+                console.log(err);
+
+                setErr("Failed to load movies...")
+            }
+            finally {
+                setLoading(false)
+            }
+        }
+
+        loadPopularMovies()
+    }, [])
+
+    const handleSearch = async (e) => {
+        e.preventDefault()
+        
+        if(!searchQuery.trim()) return
+        if(loading) return
+
+        setLoading(true)
+
+        try{
+            const searchResults = await searchMovies(searchQuery)
+            setMovies(searchResults)
+            setErr(null)
+        }
+        catch(err){
+            console.log("Error while searching: \n" , err)
+            setErr("Failed to search movie...")
+            
+        }
+        finally{
+            setLoading(false)
+        }
     }
 
     return (
@@ -33,13 +70,17 @@ function Home() {
                 <button className="search-btn">Search</button>
 
             </form>
-            <div className="movies-grid">
 
-                {/* doing '&&' is pretty much saying, if the left hand side is true then do the right thing. Also, this code is used to dynamically show results while typing movie in search bar.*/}
-                {/* {movies.map((movie) => movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && <MovieCard movie={movie} key={movie.id} />)}   */}
+            {err && <div className="error-msg">{err}</div>}
+            {loading ? <div className="loading">Loading...</div> :
+                <div className="movies-grid">
 
-                {movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
-            </div>
+                    {/* doing '&&' is pretty much saying, if the left hand side is true then do the right thing. Also, this code is used to dynamically show results while typing movie in search bar.*/}
+                    {/* {movies.map((movie) => movie.title.toLowerCase().startsWith(searchQuery.toLowerCase()) && <MovieCard movie={movie} key={movie.id} />)}   */}
+
+                    {movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
+                </div>
+            }
         </div>
     )
 }
