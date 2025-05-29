@@ -8,8 +8,7 @@ function MovieCard({ movie })  // Supposing in the beginning that we get an obje
 
     function onFavoriteClick(e) 
     {
-        // e.preventDefault()
-        if(isFavorite()) removeFromFavorites(movie.id)
+        if(isFavorite(movie.id)) removeFromFavorites(movie.id)
 
         else addToFavorites(movie)
     }
