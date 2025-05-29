@@ -1,3 +1,5 @@
+import '../css/MovieCard.css'
+
 function MovieCard({ movie })  // Supposing in the beginning that we get an object i.e., movie
 {
 

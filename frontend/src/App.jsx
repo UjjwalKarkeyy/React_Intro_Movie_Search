@@ -1,8 +1,9 @@
-import './App.css'
+import './css/App.css'
 import MovieCard from "./components/MovieCard"
 import Favorites from './pages/Favorites.jsx'
 import Home from "./pages/Home.jsx"
 import { Route, Routes } from "react-router-dom"
+import NavBar from './components/NavBar.jsx'
 
 // function App() {  // This is a component: A component is basically a function that returns a jsx or say react code!
 
@@ -26,17 +27,19 @@ import { Route, Routes } from "react-router-dom"
 function App() {
 
   return (
-    <main className='main'>
-      {/* This is called conditional rendering */}
-      {/* {movieNumber === 1 ? <MovieCard movie={{ title: "Ujjwal Karki Don", release_date: "2025" }} /> :  
+    <div>
+      <NavBar/>
+      <main className='main'>
+        {/* This is called conditional rendering */}
+        {/* {movieNumber === 1 ? <MovieCard movie={{ title: "Ujjwal Karki Don", release_date: "2025" }} /> :  
         <MovieCard movie={{ title: "Don ho Ujjwal Karki", release_date: "2020" }} />} */}
 
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/favorites' element={<Favorites/>}/>
-      </Routes>
-    </main>
-
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/favorites' element={<Favorites />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 

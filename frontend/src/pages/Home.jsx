@@ -1,5 +1,6 @@
 import MovieCard from "../components/MovieCard.jsx"
 import { useState } from "react"
+import '../css/Home.css'
 
 // Now, components make up parts of the UI right and yes you can make them whole pages, but we don't want that. That's not why we use components.
 // So, we create pages folder to store all the pages that we are going to show and we'll later use page router to jump or say redirect between pages.
