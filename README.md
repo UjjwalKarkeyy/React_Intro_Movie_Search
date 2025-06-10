@@ -1,4 +1,4 @@
-# 🎬 React Intro Movie SearchAdd commentMore actions
+# 🎬 React Intro Movie Search
 
 A beginner-friendly React app for searching movies using the TMDb API. Users can search for movies, view popular titles, and manage a list of favorites that persist across sessions using local storage.
 
