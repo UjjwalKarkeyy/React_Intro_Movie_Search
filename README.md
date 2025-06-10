@@ -1,44 +1,35 @@
-# 🎬 React Intro Movie Search
+# 📊 Google ML Crash Course – Linear Regression (Chicago Taxi Dataset)
 
-A beginner-friendly React app for searching movies using the TMDb API. Users can search for movies, view popular titles, and manage a list of favorites that persist across sessions using local storage.
-
-> 🚀 First React project built with basic JavaScript knowledge.
+A beginner-friendly machine learning notebook using the **Chicago Taxi dataset**. This project demonstrates **Linear Regression** to predict taxi fares based on features like trip distance and time.  
+> 🚀 Part of the Google Machine Learning Crash Course exercises.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Search movies by keyword
-- 🎞️ View popular movies on page load
-- ❤️ Add or remove movies from your favorites list
-- 💾 Favorites persist using local storage
-- 📱 Responsive UI with simple styling
+- 📈 Load and explore real-world taxi trip data
+- 🔍 Data cleaning and feature selection
+- 🛠️ Build a simple Linear Regression model with scikit-learn
+- 📊 Evaluate model performance using metrics like MSE and R²
+- 📑 Step-by-step documentation for easy understanding
 
 ---
 
 ## 🛠️ Tech Stack
 
-- React (with Hooks)
-- React Router
-- Context API
-- TMDb API
-- CSS
-- Vite
+- Python (Jupyter Notebook)
+- pandas
+- numpy
+- matplotlib
+- scikit-learn
 
 ---
 
-## 📂 Folder Structure
+## 📂 Notebook Structure
 
 ```
-React_Intro_Movie_Search/
-├── components/       # Reusable UI components
-├── contexts/         # Global state with React Context
-├── css/              # Component-level styles
-├── pages/            # Page-level components
-├── services/         # API communication logic
-├── App.jsx           # Root app component
-├── main.jsx          # React entry point
-└── index.css         # Global styles
+Google_ML_CrashCourse_LR/
+├── linear_regression_taxi.ipynb  # Main notebook with all exercises
 ```
 
 ---
@@ -46,92 +37,64 @@ React_Intro_Movie_Search/
 ## 🔧 Setup Instructions
 
 1. **Clone the repository:**
-
    ```bash
-   git clone https://github.com/UjjwalKarkeyy/React_Intro_Movie_Search.git
-   cd React_Intro_Movie_Search
+   git clone https://github.com/UjjwalKarkeyy/Google_ML_CrashCourse_LR.git
+   cd Google_ML_CrashCourse_LR
    ```
-
 2. **Install dependencies:**
-
    ```bash
-   npm install
+   pip install numpy pandas matplotlib scikit-learn
    ```
-
-3. **Set up TMDb API Key:**
-
-   - Get your API key from [TMDb](https://www.themoviedb.org/)
-   - Create a `.env` file in the root:
-
-     ```
-     VITE_TMDB_API_KEY=your_api_key_here
-     ```
-
-4. **Start the development server:**
-
+3. **Run the notebook:**
    ```bash
-   npm run dev
+   jupyter notebook linear_regression_taxi.ipynb
    ```
-
-   Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 ---
 
 ## 🔍 How It Works
 
-### `MovieCard.jsx`
-Displays individual movie info with a heart button to add/remove from favorites.
+### 📌 Data Loading
+- Reads the Chicago taxi dataset from an online CSV.
+- Creates a DataFrame with selected columns: `TRIP_MILES`, `TRIP_SECONDS`, `FARE`, `COMPANY`, `PAYMENT_TYPE`, and `TIP_RATE`.
 
-### `MovieContexts.js`
-Provides global context with:
-- `addToFavorites()`
-- `removeFromFavorites()`
-- `isFavorite()`
+### 📌 Data Exploration
+- Uses `.describe()` to explore dataset statistics.
+- Displays basic visualizations (optional).
 
-Also handles persistence using local storage.
+### 📌 Feature Engineering
+- Selects key features (e.g., trip distance and duration) to predict fare.
 
-### `Home.jsx`
-Handles:
-- Popular movies (on load)
-- Search functionality
-- Renders `MovieCard` components
+### 📌 Model Training
+- Builds and trains a **Linear Regression model** using scikit-learn.
+- Fits the model on the training data.
 
-### `api.js`
-Handles communication with TMDb API:
-- `searchMovies(query)`
-- `getPopularMovies()`
+### 📌 Evaluation
+- Calculates model performance (e.g., Mean Squared Error, R²).
+- Compares predictions with actual fares.
 
 ---
 
 ## 💡 Future Improvements
 
-- 🔄 Pagination for search results
-- 📝 Movie detail pages
-- 🔐 Authentication and user accounts
-- 🌐 Improved responsiveness and accessibility
+- 🔄 Add data visualizations (e.g., scatter plots of predicted vs. actual fares)
+- 📝 Hyperparameter tuning (e.g., adding regularization)
+- 🌐 Test with new features to improve accuracy
 
 ---
 
 ## 🧠 Lessons Learned
 
-This project helped build a foundational understanding of:
-- React components and state
-- Context API
-- Basic API integration
-- Real-world app structure and data flow
+This project helped reinforce:
+- Loading and cleaning real-world datasets
+- Data exploration and feature engineering
+- Basic implementation of Linear Regression in Python
+- Understanding model evaluation metrics
 
 ---
+
 ## 🙌 Acknowledgements
 
-- [TMDb API](https://www.themoviedb.org/)
-- [React Docs](https://reactjs.org/)
+- [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+- [scikit-learn](https://scikit-learn.org/)
 - Built by [@UjjwalKarkeyy](https://github.com/UjjwalKarkeyy)
----
-
-## Home Page View:
-![Screenshot 2025-05-29 190637](https://github.com/user-attachments/assets/1738b573-0935-40c3-9849-a5d51b52bdf5)
-
-## Pavorites Page View:
-![Screenshot 2025-05-29 190705](https://github.com/user-attachments/assets/ee7505f6-dc31-4b74-a387-7010695d52b7)
-
-  
